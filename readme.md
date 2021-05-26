@@ -23,7 +23,7 @@ my mentor, my pals 萧浩梁 and 周昊天(a.k.a 天神) for their significant h
 
 ## Download
 
-You can download the [pdf file](https://raw.githubusercontent.com/complex2-liu/undergraduate-thesis/main/genus-formula.pdf) only,
+You can download the [pdf file](https://github.com/complex2-liu/my-undergraduate-thesis/raw/main/genus-formula.pdf) only,
 or download the whole project to your local and simply run
 ```bash
 cd my-undergraduate-thesis
