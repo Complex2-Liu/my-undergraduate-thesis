@@ -1,0 +1,102 @@
+\usepackage{amsmath}
+\let\openbox\relax
+\usepackage{amsthm}
+\let\Bbbk\relax
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{indentfirst}
+\usepackage{tikz-cd}
+\usepackage[nameinlink]{cleveref}
+    \def\namethm{定理}
+    \def\namecor{推论}
+    \def\namelem{引理}
+    \def\nameprop{命题}
+    \def\namedefin{定义}
+    \def\nameexmp{例}
+    \def\namerem{注}
+\newtheorem{thm}{\namethm}[chapter]
+\newtheorem{cor}[thm]{\namecor}
+\newtheorem{lem}[thm]{\namelem}
+\newtheorem{prop}[thm]{\nameprop}
+\newenvironment{claim}[1][断言]
+{\par\medskip\noindent\bbf{#1.} }
+{\par\medskip}
+\theoremstyle{definition}
+\newtheorem{defin}{\namedefin}[chapter]
+\newtheorem{exmp}{\nameexmp}[chapter]
+\newtheorem*{rem}{\namerem}
+\numberwithin{equation}{chapter}
+\AtBeginDocument{\renewcommand*{\setminus}{\mathbin{\backslash}}}
+\AtBeginDocument{\let\Re\relax}
+\AtBeginDocument{\let\Im\relax}
+\AtBeginDocument{\DeclareMathOperator{\Re}{Re}}
+\AtBeginDocument{\DeclareMathOperator{\Im}{Im}}
+\AtBeginDocument{
+   \setlength\abovedisplayskip{4pt}
+   \setlength\belowdisplayskip{4pt}
+}
+\crefname{figure}{图}{图}
+% operator macros
+
+% Basic
+\newcommand{\ii}{\item}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\defeq}{\coloneqq}
+\DeclareMathOperator{\eqdef}{\eqqcolon}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\innerp}{\langle}{\rangle}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\paren}{(}{)}
+\DeclarePairedDelimiter{\bracket}{[}{]}
+\DeclarePairedDelimiter{\bracketcur}{\{}{\}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\renewcommand*{\restriction}[1]{\left. #1 \right\rvert}
+\newcommand*{\divides}{\mid}
+\newcommand*{\ndivides}{\nmid}
+\newcommand*{\V}[1]{{\mathbf{#1}}}
+\newcommand*{\ol}[1]{\overline{#1}}
+\newcommand*{\embed}{\hookrightarrow}
+\newcommand*{\surj}{\twoheadrightarrow}
+\newcommand*{\powerset}{\mathcal{P}}
+\newcommand{\bbf}[1]{\textbf{#1}}
+\newcommand{\iit}[1]{\textit{#1}}
+\renewcommand{\emph}[1]{\textcolor{red!75!black}{\textit{#1}}}
+\newcommand{\eucal}[1]{\EuScript{#1}}
+
+% Algebra
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+\DeclarePairedDelimiter{\generation}{\langle}{\rangle}
+\newcommand*{\normal}{\trianglelefteq}
+
+% Group
+\DeclareMathOperator{\GL}{GL}
+
+% Matrix
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\adj}{adj}
+
+%field, galois heory
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Gal}{Gal}
+
+% fields
+\newcommand*{\CC}{{\mathbb{C}}}
+\newcommand*{\RR}{{\mathbb{R}}}
+\newcommand*{\QQ}{{\mathbb{Q}}}
+\newcommand*{\ZZ}{{\mathbb{Z}}}
+\newcommand*{\NN}{{\mathbb{N}}}
+\newcommand*{\FF}{{\mathbb{F}}}
+
+%probability
+\newcommand*{\E}{\mathbb{E}}
+
+\newcommand*{\CP}{\mathbb{CP}}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\Div}{Div}
+\usepackage{float}

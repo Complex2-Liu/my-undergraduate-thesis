@@ -1,0 +1,15 @@
+*.DS_Store
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.out
+*.run.xml
+*.toc
+*.xdv
+signature-teacher.jpg
+signature-student.png

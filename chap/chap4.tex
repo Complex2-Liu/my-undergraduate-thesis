@@ -1,0 +1,378 @@
+\chapter{亏格公式}
+\label{chap:chap-4}
+
+\fontsize{12bp}{14.4pt}
+
+设 $C\subseteq \CP^2$ 是一条次数为 $d$ 的不可约代数曲线,
+$f(x,y)$ 是它的仿射方程,
+$S$ 为 $C$ 的所有奇点构成的集合, 奇点 $p \in S$ 的重数记为 $m(p)$.
+$\sigma: \tilde{C} \to C$ 是它的正则化,
+$g = g(\tilde{C})$ 为 Riemann 的亏格.
+
+\section{普通奇点的情形}
+
+\begin{thm}[普通奇点的亏格公式]
+\label{thm:genus-formula-ordinary}
+假如 $C$ 的所有奇点都是普通奇点, 则
+\begin{equation}
+\label{eq:genus-formula-ordinary}
+g = \frac{1}{2}(d-1)(d-2) - \sum_{p \in S}\frac{1}{2}m(p)(m(p) - 1) = \binom{d-1}{2} - \sum_{p \in S}\binom{m(p)}{2}.
+\end{equation}
+\end{thm}
+
+我们先说明存在适当的坐标变换, 使得:
+\begin{enumerate}[label=(\alph*)]
+    \ii $L_\infty$ 与 $C$ 交于 $d$ 个不同的点.
+    即 $L_\infty$ 在每个交点处的相交数都是 $1$,
+    从而这 $d$ 个点都不是奇点(c.f. \cref{prop:singularity-intersection-number}),
+    并且 $L$ 也不是 $C$ 的切线.
+    \ii 奇点处的任意一条切线都不经过 $[0:0:1]$.
+    \ii $[0:0:1] \notin C$.
+\end{enumerate}
+
+考虑另一条曲线 $E$, 由仿射方程 $\frac{\partial f(x,y)}{\partial y} = 0$ 定义.
+一方面, 由 Bezout 定理我们有
+\[(C\cdot E) = d(d-1).\]
+下面我们将从另一个角度来计算 $C$ 和 $E$ 的相交数.
+
+考虑 $C \subseteq \CP^2$ 到 $x$ 轴的投影
+$\pi: [\xi_0:\xi_1:\xi_2]\mapsto [\xi_0:\xi_1:0]$.
+注意映射 $\pi$ 实际上就是把 $\CP^2$ 中任意一点,
+与 $[0:0:1]$ 连线再交直线 $\xi_2 = 0$ 得到的交点.
+从仿射的角度来看, $\pi$ 就是往 $x$ 轴的投影, 即 $\pi: (x,y) \mapsto x$.
+将直线 $\xi_2 = 0$ 与 $\CP^1$ 等同起来,
+从 $\pi$ 的表达式容易看出这是复流形之间的全纯映射,
+于是我们得到了 Riemann 面之间的全纯映射 $h\defeq \pi\circ \sigma: \tilde{C} \to \CP^1$.
+\[\begin{tikzcd}
+	{\tilde{C}} &&& C & {\mathbb{CP}^2} \\
+	\\
+	&&& {\mathbb{CP}^1}
+	\arrow["\sigma", from=1-1, to=1-4]
+	\arrow[hook, from=1-4, to=1-5]
+	\arrow["\pi", from=1-4, to=3-4]
+	\arrow["h"', from=1-1, to=3-4]
+\end{tikzcd}\]
+
+\begin{claim}
+    $\deg h =$ 代数曲线 $C$ 的次数 $d$.
+\end{claim}
+
+事实上, 设 $\mathrm{disc}(f) \eqdef \mathcal{D}(x) \in \CC[x]$,
+任取 $x_0 \in \CC$ 使得 $\mathcal{D}(x_0) \ne 0$,
+则 $f(x_0,y) = 0$ 关于 $y$ 有 $d$ 个不同的解,
+对应 $C$ 上 $d$ 个不同的点 $(x_0,y_i) \eqdef p_i, 1 \le i \le d$.
+注意到这 $d$ 个点相当于直线 $x = x_0$ 与 $C$ 相交,
+每个点处的相交数都只能恰好是 $1$,
+由此便知它们都不是奇点(c.f. \cref{prop:singularity-intersection-number}),
+并且每个点处的切线都不垂直于 $x$ 轴(即切线恰好为 $x = x_0$),
+即 $\frac{\partial f(x,y)}{\partial y}|_{p_i} \ne 0$.
+所以 $p_i$ 附近 $\sigma$ 可局部地表为 $x \mapsto (x,y(x)) \implies h$
+可局部地表为 $h(x) = x$.
+这就证明了 $h^{-1}(x_0)$ 是 $\tilde{C}$ 中 $d$ 个不同的点,
+并且 $h$ 在每个点处的分歧指标都为 $1$, 所以 $\deg h = d$.
+
+\begin{claim}
+设 $\tilde{p} \in \tilde{C}, \sigma(\tilde{p}) = p$.
+若 $p \in S$ 为 $C$ 的奇点, 则 $\tilde{p}$ 不是 $h$ 的分歧点.
+\end{claim}
+
+由 \cref{cor:ordinary-normalization} 知,
+奇点 $p$ 附近的局部正则化为 $\sigma: t \mapsto (t,y(t))$
+或 $t \mapsto (x(t),t)$.
+对于前者, $h$ 局部来看形如 $h(t) = t$, 显然不是分歧的.
+对于后者, $h$ 局部来看形如 $h(t) = x(t)$,
+因为我们一开始已经假定了奇点处的切线都不经过 $[0:0:1]$,
+即奇点处的切线都不垂直于 $x$ 轴,
+所以 $x(t)$ 幂级数展开中的一次项系数非 $0$,
+这就说明了此时 $h$ 依然不是分歧的.
+
+$C$ 与 $E$ 的交点可以分为两类,
+一类是光滑点, 一类是奇点,
+显然任意奇点都是 $C$ 与 $E$ 的交点.
+
+\begin{claim}
+$C$ 与 $E$ 在奇点 $p$ 处的相交数为 $m(p)(m(p) - 1)$.
+\end{claim}
+
+不妨设 $p = (0,0)$, 记 $n = m(p)$. 首先我们可表
+\[f(x,y) = f_n(x,y) + f_{n+1}(x,y) + \cdots, \quad f_n(x,y) \ne 0\]
+以及
+\[\frac{\partial f(x,y)}{\partial y} = g_{n-1}(x,y) + g_n(x,y) + \cdots, \quad g_j(x,y) = \frac{\partial f_{j+1}(x,y)}{\partial y}\]
+为齐次部分的和.
+因为 $p$ 是普通奇点, 由 \cref{cor:ordinary} 知
+$f(x,y)$ 恰有 $n$ 个局部不可约解析分支,
+于是我们只需证明:
+对每一个局部不可约解析分支 $V_j$ 我们有 $(V_j\cdot E)_p = m(p) - 1 = n - 1$.
+与前面讨论一样, 由 \cref{cor:ordinary-normalization} 知,
+$V_j$ 的局部正则化为
+\[t \mapsto (t,y(t)),\qquad y(t) = \alpha_1t + \alpha_2t^2 + \cdots,\]
+或
+\[t \mapsto (x(t),t) \qquad x(t) = \beta_1t + \beta_2t^2 + \cdots.\]
+对于前者 $y - \alpha_1x$ 为 $V_j$ 的切线,
+对于后者 $x - \beta_1y$ 为 $V_j$ 的切线,
+我们暂时假定 $V_j$ 的局部正则化为第一种情形,
+此时要说明 $(V_j\cdot E)_p = n - 1$, 只需说明
+\[\frac{\partial f_n}{\partial y}(t,y(t)) = g_{n-1}(t,y(t)) \ne 0.\]
+注意到
+\[g_{n-1}(t,y(t)) = g_{n-1}(t,\alpha_1t+\alpha_2t^2 + \cdots) = t^{n-1}g_{n-1}(1,\alpha_1 + \alpha_2t+\cdots),\]
+因为 $p$ 是普通奇点, $x \ndivides f_n(x,y)$, $p$ 处的 $n$ 条切线互不相同,
+所以这 $n$ 条切线在 $f_n(x,y)$ 中的分解重数为 $1$,
+故 $V_j$ 的切线 $y - \alpha_1x$ 不是 $g_{n-1}(x,y)$ 的因子,
+于是我们有 $g_{n-1}(1,\alpha_1) \ne 0$.
+这就证明了 $g_{n-1}(t,y(t))$ 的 order 为 $n - 1$,
+同理可证 $V_j$ 的局部正则化为第二种情形时,
+$(V_j\cdot E)_p = n - 1$ 也成立.
+
+\begin{claim}
+设 $C$ 与 $E$ 交于光滑点 $p$, 设 $\tilde{p} = \sigma^{-1}(p)$,
+则 $C$ 与 $E$ 在 $p$ 处的相交数为 $\nu_h(\tilde{p}) - 1$.
+\end{claim}
+
+因为 $p$ 为光滑点, 且 $p \in E$, 所以
+\[\restriction{\frac{\partial f(x,y)}{\partial x}}_p \ne 0.\]
+于是 $p$ 附近的局部正则化为 $y \mapsto (x(y),y)$.
+注意到我们有
+\[0 = \frac{\partial f(x(y),y)}{\partial x}\cdot x'(y) + \frac{\partial f(x(y),y)}{\partial y},\]
+由此可得
+\[\text{order of }\frac{\partial f(x(y),y)}{\partial y} = \text{order of }x'(y) = \text{order of }x(y) - 1 = \nu_h(\tilde{p}) - 1.\]
+
+综上, 我们得到了
+\begin{align*}
+d(d-1) &= \sum_{p\in C\cap E}(C\cdot E)_p\\
+&= \sum_{p' \in (C\cap E)\setminus S}(C\cdot E)_{p'} + \sum_{p \in S}(C\cdot E)_p\\
+&= \deg R_h + \sum_{p \in S}m(p)(m(p) - 1).
+\end{align*}
+最后再利用 Riemann-Hurwitz 公式(c.f. \cref{prop:Riemann-Hurwitz-Formula}),
+\[\deg R_h = \deg h\cdot \chi(\CP^1) - \chi(\tilde{C}) = 2d - 2 + 2g,\]
+便可得到亏格公式 \cref{eq:genus-formula-ordinary}.
+
+\section{非普通奇点的情形}
+
+非普通奇点的一个典型例子是 $y^2 - x^3 = 0$,
+注意到 $[a:b]\mapsto [a^3:ab^2:b^3]$ 便是该曲线的正则化,
+所以亏格应为 $g(\CP^1) = 0$.
+
+现在我们考虑奇点的切线有重合的情形, 与之前不同,
+此时若 $\tilde{p} \in \tilde{C}$ 是 $h$ 的分歧点,
+则有可能出现 $\sigma(\tilde{p})$ 是 $C$ 的奇点.
+以 $y^2 - x^3 = 0$ 为例, 在 $(0,0)$ 处只有一个局部不可约分支,
+所以只有一个 $\tilde{p} \in \tilde{C}$ 使得 $\sigma(\tilde{p}) = (0,0)$.
+另一方面, $\sigma$ 在 $\tilde{p}$ 处的局部正则化为 $t \mapsto (t^2, t^3)$,
+由此可见 $h$ 在 $\tilde{p}$ 处的分歧指标为 $2$,
+分歧除子 $R_h$ 在 $\tilde{p}$ 处的系数为 $1$.
+再注意到 $f(x,y)$ 与 $\frac{\partial f(x,y)}{\partial y} = 2y$ 在 $(0,0)$ 处的相交数为
+$\text{order of }2t^3 = 3$, 所以成立
+\[d(d-1) - \deg R_h = 3 - 1 = 2,\]
+这个 $2$ 来自于 $\tilde{p}$ 对分歧除子的贡献为 $1$,
+但是对相交数的贡献却为 $3$, 两者相差了 $2$.
+类似的方法可以知道, 对于 $y^2 - x^5 = 0$, 成立
+\[d(d-1) - \deg R_h = 5 - 1 = 4.\]
+那么对于一般的情形,
+\begin{equation}
+\label{eq:genus-formula-what}
+d(d-1) - \deg R_h = \text{什么东西呢?}
+\end{equation}
+
+和普通奇点的情形一样, 若 $\sigma(\tilde{p})$ 为光滑点,
+则 $\tilde{p}$ 对相交数的贡献和对分歧除子 $R_h$ 系数的贡献一致,
+所以我们只需分析使得 $\sigma(\tilde{p})$ 为奇点的那些 $\tilde{p}$.
+
+假设 $p = (0,0)$ 为 $C$ 的奇点, 重数为 $k$,
+并且该奇点处有 $s = s(p)$ 个局部不可约解析分支,
+则 $\sigma^{-1}(p)$ 为 $\tilde{C}$ 中 $s$ 个不同的点,
+记为 $p_1,\cdots, p_s$, 每个 $p_j$ 对应的局部不可约解析分支为 $w_j(x,y)$.
+
+若 $w_j(x,y)$ 的 order $n_j = l_j$,
+则此时 $h$ 在 $p_j$ 可局部地表为 $h(t) = t^{l_j}$,
+所以 $p_j$ 对 $\deg R_h$ 的贡献为 $l_j - 1 = n_j - 1$.
+注意 $p_j$ 对相交数的贡献就是 $w_j(x,y)$ 与 $\frac{\partial f(x,y)}{\partial y}$ 的相交数,
+记此相交数为 $I_j$,
+则 $p_j$ 对 \cref{eq:genus-formula-what} 右边的贡献为 $I_j - n_j + 1$.
+于是, 一般情形的亏格公式为
+\begin{equation}
+\label{eq:genus-formula-general}
+g = \frac{1}{2}(d-1)(d-2) - \frac{1}{2}\sum_{p\in S}\sum_{j=1}^{s(p)}(I_j - n_j + 1).
+\end{equation}
+普通奇点的时候就是 \cref{eq:genus-formula-general} 中
+$s(p) = m(p), I_j = m(p) - 1, n_j = 1$.
+注意 $I_j$ 的取值依赖于奇点的复杂程度,
+不能像普通奇点的情形一样, 简单依赖于奇点的重数 $m(p)$.
+比如对于 $y^2 - x^{2m+1} = 0, m \in \ZZ_{>0}$,
+$p = (0,0)$ 都是 $m(p) = 2$ 重奇点, $s(p) = 1, n_j = 2$,
+但 $I_j = 2m + 1$.
+
+\section{非普通奇点的另外一种处理方法}
+
+数学中一种常见的处理问题的方法就是划归,
+把新的问题转化为已经解决好的问题.
+在 \cite{notes} 中, 我们考虑对曲线 $C$ 作适当的变换,
+得到曲线 $D$, 使得 $C$ 的非普通奇点在变换之后成为了新曲线 $D$ 的普通奇点.
+
+考虑变换 $T: [x:y:z]\mapsto [yz:xz:xy]$,
+注意当 $xyz \ne 0$ 时, $T^2: [x:y:z]\mapsto [x^2yz:xy^2z:xyz^2] = [x:y:z]$,
+由此可见 $T$ 是 $U \defeq \CP^2\setminus V(xyz)$ 上的一个全纯同构. 定义
+\begin{equation}
+\label{eq:psuedo-genus}
+g^*(C) \defeq \binom{d-1}{2} - \sum_{p \in S}\binom{m(p)}{2}.
+\end{equation}
+于是对于只有普通奇点的代数曲线 $C, g^*(C) = g(C)$.
+最后, 我们还需要找出 $g^*(D)$ 和 $g^*(C)$ 之间的关系.
+
+\begin{lem}
+\label{lem:pseudo-genus-always-non-negative}
+对任意不可约代数曲线$C, g^*(C)$ 总是非负的.
+\end{lem}
+
+\begin{proof}
+\footnote{\cite{notes}, 命题 1}
+和亏格公式的证明一样, 我们考虑另一条代数曲线 $E$,
+由仿射方程 $\frac{\partial f(x,y)}{\partial y} = 0$ 定义.
+一方面由 Bezout 定理知 $(C\cdot E) = d(d-1)$.
+另一方面, 对 $C$ 中任意重数为 $m$ 的点,
+它在 $E$ 中的重数至少为 $m - 1$,
+利用 \cref{prop:singularity-intersection-number} 便有
+$d(d-1) \ge \sum m(m-1)$, 从而
+\[r\defeq \frac{1}{2}(d+2)(d-1)-\sum_{p \in C\cap D}\frac{1}{2}m(p)(m(p) - 1)\ge 0.\]
+设 $S^d$ 为所有 $d$ 次齐次多项式 $F(\xi_0,\xi_1,\xi_2)$ 构成的线性空间,
+显然 $\dim S^d = \frac{1}{2}(d+2)(d+1)$.
+注意 $S^d$ 中相差常数倍的两个齐次多项式实际代表同一条代数曲线,
+所以次数为 $d$ 的代数曲线构成了 $\frac{1}{2}d(d+3)$ 维线性空间.
+要使得某一点的重数为 $m$, 相当于给齐次多项式的系数增加 $\frac{1}{2}m(m+1)$ 个线性约束(比如,
+若 $[1:0:0]$ 的重数为 $m$, 则我们要求 $\xi_1^i\xi_2^j, i+j < m$ 项的系数都为 $0$).
+设 $G$ 是一个次数为 $d-1$ 的代数曲线,
+满足对任意 $p \in C, m(p) \ge 2, p$ 为 $G$ 中的 $m(p)-1$ 重点,
+并且 $G$ 与 $C$ 还有额外 $r$ 个公共点.
+这样的 $G$ 总是存在的, 因为 $\frac{1}{2}(d-1)(d+2) - \sum\frac{1}{2}m(m-1) - r \ge 0$.
+另一方面, 对 $F,G$ 用 Bezout 定理我们有 $(F\cdot G) = d(d-1) \ge \sum m(m-1) + r$,
+由此便得 $\frac{1}{2}(d-1)(d-2) \ge \sum\frac{1}{2}m(m-1)$.
+\end{proof}
+
+\begin{lem}
+\label{lem:transformation-property}
+设 $F(\xi_0,\xi_1,\xi_2)$ 为 $n$ 次齐次多项式,
+无一次因子 $\xi_0, \xi_1, \xi_2$.
+设 $P,Q,R$ 分别为 $[0:0:1], [0:1:0], [1:0:0]$,
+重数分别为 $a,b,c$.
+定义
+\begin{equation}
+\label{eq:transformation}
+\tilde{F}(\xi_0,\xi_1,\xi_2) \defeq \frac{F(\xi_1\xi_2, \xi_0\xi_2, \xi_0\xi_1)}{\xi_0^c\cdot\xi_1^b\cdot\xi_2^a}.
+\end{equation}
+\begin{enumerate}[label=\normalfont(\roman*)]
+    \ii $\tilde{F}$ 为 $2n-a-b-c$ 次齐次多项式,
+    并且 $\tilde{F}$ 再变换一次就变回原来的 $F$.
+    \ii $P,Q,R$ 在代数曲线 $V(\tilde{F})$ 中的重数分别为
+    $n-b-c,n-a-c,n-a-b$.
+    \ii $F$ 不可约当且仅当 $\tilde{F}$ 不可约.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+\footnote{\cite{notes}, 命题 2} (i) $\tilde{F}$ 的次数为 $2n-a-b-c$ 是显然的.
+因为 $P$ 的重数为 $a$,
+所以 $F$ 中 $\xi_2$ 的最高次数为 $n-a$, 所以我们有
+\begin{align*}
+F(\xi_0,\xi_1,\xi_2) &= F_a(\xi_0,\xi_1)\xi_2^{n-a} + \cdots + F_{n}(\xi_0,\xi_1),\\
+F(\xi_1\xi_2,\xi_0\xi_2,\xi_1\xi_2) &= F_a(\xi_1\xi_2,\xi_0\xi_2)(\xi_0\xi_1)^{n-a} + \cdots + F_{n}(\xi_1\xi_2,\xi_0\xi_2),
+\end{align*}
+其中 $F_i(\xi_0,\xi_1)$ 为 $i$ 次齐次多项式.
+由此可见 $\tilde{F}$ 也不含一次因子 $\xi_2$,
+换句话说, $\tilde{F}$ 就是 $F(\xi_1\xi_2,\xi_0\xi_2,\xi_0\xi_1)$ 再约去所有一次因子,
+所以 $\tilde{F}$ 再作一次变换就变回原来的 $F$.
+
+(ii) 我们有
+\[\tilde{F}(\xi_0,\xi_1,\xi_2) = \sum_{i=0}^{n-a}F_{a+i}(\xi_1,\xi_0)\xi_0^{n-a-c-i}\xi_1^{n-a-b-i}\xi_2^i,\]
+即关于 $\xi_2$ 的最高次数为 $n-a$,
+所以 $P$ 在 $V(\tilde{F})$ 中的重数为 $2n-a-b-c-(n-a) = n-b-c$.
+同理可得 $Q,R$ 在 $V(\tilde{F})$ 中的重数.
+
+(iii) 显然 $F$ 的任意分解都给出了 $\tilde{F}$ 的一个分解, 反之亦然.
+\end{proof}
+
+设 $C = V(F), D = V(\tilde{F}), P$ 为 $C$ 中重数为 $k$ 的奇点.
+进行适当的坐标变换, 使得:
+\begin{enumerate}[label=(\alph*)]
+    \ii 直线 $\xi_0 = 0, \xi_1 = 0$ 都与 $C$ 交于 $P$ 以及 $P$ 之外 $n-k$ 个不同的点.
+    \ii $Q,R \notin C$.
+    \ii 直线 $\xi_2 = 0$ 与 $C$ 交于 $n$ 个不同的点.
+\end{enumerate}
+
+\begin{lem}
+\label{lem:singularity-become-ordinary}
+在上述条件下, $D$ 的奇点及奇点的重数为:
+\begin{enumerate}[label=\normalfont(\roman*)]
+    \ii 在 $U$ 中 $C$ 与 $D$ 全纯同构, 因而奇点有一一对应关系,
+    互相对应的奇点性状完全相同(重数一样, 普通奇点对应普通奇点, 非普通奇点对应非普通奇点).
+    \ii $P,Q,R$ 都是 $D$ 的普通奇点.
+    \ii $D\cap \{\xi_0 = 0\} = \{P,Q\}, D\cap \{\xi_1 = 0\} = \{P,R\}$.
+    \ii 除点 $Q,R$ 外, $D$ 与直线 $\xi_2 = 0$ 的相交数为 $k$.
+    换句话说, $D$ 与直线 $\xi_2 = 0$ 在 $Q,R$ 处的相交数都恰好为 $n-k$.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+\footnote{\cite{notes}, 引理 3}
+(i) 显然.
+
+(ii) 由 \cref{lem:transformation-property} 知 $\tilde{F}$ 的次数为 $2n - k$,
+$P,Q,R$ 的重数分别为 $n, n-k, n-k$.
+注意 $P$ 的 $n$ 次齐次项为 $F_{n}(\xi_1,\xi_0)$,
+结合条件 (c) 便知 $P$ 点处的 $n$ 条切线互异,
+故 $P$ 为普通奇点.
+同理, 考察 $Q,R$ 的 $n-k$ 次齐次项,
+再结合条件 (a) 便知 $Q,R$ 也为普通奇点.
+
+(iii) 因为 $P,Q$ 的重数分别为 $n, n-k$,
+由 \cref{prop:singularity-intersection-number} 知
+$D$ 与 $\xi_0 = 0$ 在 $P,Q$ 处的相交数分别至少为 $n,n-k$,
+再由 Bezout 定理便知 $D\cap \{\xi_0 = 0\}$ 只有 $P,Q$ 两点.
+同理可证 $D\cap \{\xi_1 = 0\} = \{P,R\}$.
+
+(iv) 事实上, 若表
+\[F(\xi_0,\xi_1,\xi_2) = \sum_{i=0}^n G_i(\xi_1,\xi_2)\xi_0^{n-i},\]
+其中 $G_i$ 为 $i$ 次齐次多项式, 则
+\[\tilde{F}(\xi_0,\xi_1,\xi_2) = \sum_{i=0}^n G_i(\xi_2,\xi_1)\xi_1^{n-i}\xi_2^{n-k-i}\xi_0^i.\]
+于是 $\xi_2 = 0$ 与 $\tilde{F}$ 在 $R$ 处的相交数为
+\[\text{order of }\restriction{G_n(y,x)y^{-k}}_{y=0} \le n - k,\]
+结合 $R$ 的重数为 $n-k$ 及 \cref{prop:singularity-intersection-number} 便可得证.
+\end{proof}
+
+\begin{cor}
+\label{cor:pseudo-genus-relation}
+我们有 $g^*(D) = g^*(C) - \sum_{r}\binom{\ol{m}(r)}{2}$,
+这里 $\ol{m}(r)$ 为 $r\in (D\cap V(\xi_2))\setminus \{Q,R\}$ 在 $D$ 中的重数.
+\end{cor}
+
+\begin{proof}
+\footnote{\cite{notes}, 推论 4} 我们有
+\[g^*(C) = \binom{n-1}{2} - \binom{k}{2} - \sum_q\binom{m(q)}{2},\]
+其中 $\sum_q$ 为对所有 $C$ 中的奇点 $q \ne P$ 求和. 以及
+\begin{align*}
+g^*(D) &= \binom{2n-k-1}{2} - \binom{n}{2} - 2\cdot\binom{n-k}{2} - \sum_r \binom{\ol{m}(r)}{2}\\
+&=\binom{n-1}{2} - \binom{k}{2} - \sum_r\binom{\ol{m}(r)}{2},
+\end{align*}
+其中 $\sum_r$ 为对所有 $D$ 中的奇点 $r \notin \{P,Q,R\}$ 求和.
+于是
+\[g^*(C) - g^*(D) = \sum_r\binom{\ol{m}(r)}{2} - \sum_q\binom{m(q)}{2}.\]
+由 \cref{lem:singularity-become-ordinary} 的 (i) 知
+我们只需计算 $q,r \in \CP^2\setminus U = V(\xi_0)\cup V(\xi_1)\cup V(\xi_2)$ 的贡献.
+由 (a),(c) 知这样的 $q$ 不存在,
+由 \cref{lem:singularity-become-ordinary} 的 (iii) 和 (iv)
+知这样的 $r \in D\cap V(\xi_2)$
+\end{proof}
+
+也就是说变换之后, $g^*$ 要么严格变小要么不变,
+对于后者, 我们有 $\ol{m}(r) = 1$,
+即 $\xi_2 = 0$ 与 $D$ 的除 $Q,R$ 外的交点都不是奇点,
+此时非普通奇点的个数严格变小.
+对于前者, 由 \cref{lem:pseudo-genus-always-non-negative} 知这样的情形只会发生有限多次.
+于是, 经过若干次这样的变换之后, 我们便回到了所有奇点都是普通奇点的情形.
+
+\begin{exmp}
+对代数曲线 $\xi_0^3 = \xi_1^2\xi_2$ 作坐标变换
+$(\xi_0,\xi_1,\xi_2) \mapsto (\xi_0+\xi_1,\xi_0-\xi_1,\xi_0+\xi_2)$,
+我们有 $(\xi_0+\xi_1)^3 = (\xi_0-\xi_1)^2(\xi_0+\xi_2)$,
+记这个齐次方程对应的曲线为 $C$,
+则对应的 $D$ 的齐次方程为 $(\xi_1-\xi_0)^2\xi_1 = \xi_2(\xi_0^2 + 2\xi_0\xi_1 + 5\xi_1^2)$.
+对新曲线 $D$ 而言, $[0:0:1]$ 变成了普通奇点.
+\end{exmp}
