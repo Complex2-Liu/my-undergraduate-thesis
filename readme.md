@@ -29,7 +29,10 @@ or download the whole project to your local and simply run
 cd my-undergraduate-thesis
 latexmk
 ```
-My personal tex setting(like various user-defined commands and environment)
+Note that this repository doesn't include the signatures for privacy,
+one should remove the corresponding part in [origin.tex](./chap/origin.tex) before running `latexmk`.
+
+My personal tex setting(like various user-defined commands and environments)
 is included in [header](./header).
 
 ## About the template
@@ -40,6 +43,8 @@ and I make a bit of modification in order to accommodate
 the layout requirement.
 
 ### Font
+
+Make sure your system has alread installed these fonts: `SimSun, SimHei, KaiTi`.
 
 It appears that pkuthss uses `ctex` to support Chinese,
 though it is not recommended generally.
@@ -145,7 +150,7 @@ to make the layout of English abstract page right.
     Use
     ```tex
     \let\Bbbk\relax
-    \usepackage{amsthm}
+    \usepackage{amssymb}
     ```
-    instead to resolve.
+    instead to resolve. Similar problems can be resolved by this trick.
 
